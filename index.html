@@ -9,144 +9,39 @@
 <meta property="og:description" content="Documentary films and video for organizations, educators, and communities.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://brocknedwards.com/">
+<meta property="og:image" content="https://brocknedwards.com/img/stills/ttws-still-1.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #111;
-    --paper: #fff;
-    --muted: #555;
-    --rule: #e2e2e2;
-    --narrow: 'Archivo Narrow', 'Arial Narrow', sans-serif;
-    --body: 'Archivo', system-ui, sans-serif;
-    --max: 1080px;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
-  a { color: inherit; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-
-  /* Header + wordmark (matches Brand/_source/wordmark.html) */
-  header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-  .mark { display: flex; align-items: stretch; gap: 9px; text-decoration: none; }
-  .mono { width: 44px; height: 43px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center;
-    font: 800 19px/1 var(--body); letter-spacing: -.03em; }
-  .stack { font: 700 23px/0.92 var(--narrow); text-transform: uppercase; letter-spacing: .02em; display: flex; flex-direction: column; justify-content: center; }
-  nav { display: flex; gap: 28px; }
-  nav a { font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
-  nav a:hover { color: var(--ink); }
-
-  .eyebrow { font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-  h1, h2, h3 { font-family: var(--narrow); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; margin: 0; }
-  h1 { font-size: clamp(40px, 7vw, 76px); }
-  h2 { font-size: clamp(30px, 4.5vw, 46px); margin-bottom: 28px; }
-  h3 { font-size: 22px; margin-bottom: 8px; }
-  section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 76px; }
-
-  /* Reel */
-  .hero { padding: 64px 0 88px; }
-  .hero h1 { margin-bottom: 36px; max-width: 18ch; }
-  .reel { position: relative; aspect-ratio: 2.39 / 1; background: var(--ink); }
-  .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-
-  /* Featured film */
-  .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
-  .film img.poster { width: 100%; height: auto; display: block; }
-  .film p { margin: 0 0 16px; max-width: 52ch; }
-  .meta { font: 500 13px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
-  .stills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 56px; }
-  .stills img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-
-  /* Awards */
-  .feature { display: block; text-decoration: none; background: var(--ink); color: var(--paper); padding: 32px; margin-bottom: 40px; }
-  .feature h3 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 10px; }
-  .feature p { margin: 0; color: #ccc; max-width: 60ch; }
-  .feature .eyebrow { color: #aaa; }
-  .feature:hover h3 { text-decoration: underline; text-underline-offset: 6px; }
-  .awards { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
-  .awards li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-  .awards b { font: 700 19px var(--narrow); text-transform: uppercase; letter-spacing: .02em; }
-  .awards span { color: var(--muted); text-align: right; font-size: 15px; }
-  .film-awards { margin-top: 32px; }
-  .film-awards li { padding: 10px 0; }
-  .film-awards b { font-size: 16px; }
-  .film-awards span { font-size: 14px; }
-  .btn { display: inline-block; margin-top: 8px; padding: 12px 20px; background: var(--ink); color: var(--paper); text-decoration: none;
-    font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; }
-  .btn:hover { background: #333; }
-
-  /* Services */
-  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .services div { border-top: 2px solid var(--ink); padding-top: 18px; }
-  .services p { margin: 0; color: #333; font-size: 16px; }
-
-  /* About + contact */
-  .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: center; }
-  .about .headshot { width: 100%; height: auto; display: block; }
-  .awards-block { margin-top: 88px; }
-  .about p { margin: 0 0 16px; max-width: 60ch; }
-  .contact { background: var(--ink); color: var(--paper); border: 0; }
-  .contact .eyebrow { color: #aaa; }
-  .contact a.email { font: 700 clamp(26px, 4.5vw, 46px)/1.1 var(--narrow); text-transform: lowercase; text-decoration: none; border-bottom: 2px solid var(--paper); word-break: break-all; }
-  .contact p { color: #ccc; max-width: 52ch; margin: 24px 0 0; }
-
-  footer { padding: 28px 0; font: 500 12px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-  @media (max-width: 760px) {
-    nav { gap: 16px; }
-    nav a { letter-spacing: .14em; font-size: 12px; }
-    .stack { font-size: 19px; }
-    .mono { width: 36px; height: 36px; font-size: 16px; }
-    section { padding: 64px 0; }
-    .film, .about, .services { grid-template-columns: 1fr; gap: 32px; }
-    .stills { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
-    .awards li { flex-direction: column; gap: 2px; }
-    .awards span { text-align: left; }
-    .feature { padding: 24px; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="mark" href="#top" aria-label="Brock Edwards, home">
+    <a class="mark" href="index.html" aria-label="Brock Edwards, home">
       <span class="mono">BE</span>
       <span class="stack">Brock<br>Edwards</span>
     </a>
     <nav>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main>
   <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Documentary · Video</p>
-      <h1>Stories about people, place, and work.</h1>
-      <div class="reel">
-        <iframe src="https://player.vimeo.com/video/904550298?title=0&byline=0&portrait=0&dnt=1"
-          title="Brock Edwards — Reel" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="work">
     <div class="wrap">
       <div class="film">
         <img class="poster" src="img/ttws-poster.jpg" width="1000" height="1500"
           alt="Poster for The Table We Share, with festival laurels">
         <div>
           <p class="eyebrow">Featured film</p>
-          <h2>The Table We Share</h2>
+          <h1>The Table We Share</h1>
           <p class="meta">Short documentary · Emmaus House, Garden City, Kansas</p>
           <p>In America’s breadbasket, a Kansas town confronts the paradox of hunger amid abundance — revealing how community, care, and courage redefine what it means to share the table.</p>
           <p class="meta">Director · Editor · Cinematographer</p>
@@ -172,7 +67,6 @@
     </div>
   </section>
 
-
   <section>
     <div class="wrap">
       <p class="eyebrow">What I make</p>
@@ -191,35 +85,19 @@
           <p>Course and lesson video with clear on-screen graphics, from scripting to final delivery.</p>
         </div>
       </div>
+      <a class="more" href="services.html">See services →</a>
     </div>
   </section>
 
-  <section id="about">
-    <div class="wrap about">
-      <img class="headshot" src="img/headshot.jpg" width="800" height="1000" alt="Portrait of Brock Edwards" loading="lazy">
-      <div>
-        <p class="eyebrow">About</p>
-        <h2>Brock Edwards</h2>
-        <!-- TODO(Brock): read this through and change anything that doesn't sound like you. -->
-        <p>I'm a documentary filmmaker and sociologist. Visual ethnography is at the center of how I work: I spend time with people before I point a camera at them, and the films come out of that time.</p>
-        <p>I hold a master's in sociology from Kansas State University and am a PhD student in sociology at the University of Tennessee, where I also teach. I take on documentary and video work for organizations and educators.</p>
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Demo reel</p>
+      <h2>Reel</h2>
+      <div class="reel">
+        <iframe src="https://player.vimeo.com/video/904550298?title=0&byline=0&portrait=0&dnt=1"
+          title="Brock Edwards — Reel" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
-    </div>
-    <div class="wrap awards-block">
-      <p class="eyebrow">Recognition</p>
-      <h2>Awards</h2>
-      <a class="feature" href="https://www.filmcon.net/post/30-under-30-2026" target="_blank" rel="noopener">
-        <p class="eyebrow">Filmmakers Connect · 2026</p>
-        <h3>30 Under 30</h3>
-        <p>Named one of thirty emerging filmmakers across Filmmakers Connect's partner festivals. Read the feature →</p>
-      </a>
-      <ul class="awards">
-        <li><b>Best First-Time Director</b><span>New York Movie Awards · Tokyo Film &amp; Screenplay Awards · Florence Film Awards (Gold)</span></li>
-        <li><b>Best Director</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
-        <li><b>Best Editing</b><span>New York Movie Awards · New York International Film Awards (Honorable Mention)</span></li>
-        <li><b>Best Cinematography</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
-        <li><b>Best Indie Filmmaker</b><span>Top Shorts</span></li>
-      </ul>
+      <a class="more" href="work.html">See more work →</a>
     </div>
   </section>
 
@@ -234,10 +112,10 @@
 
 <footer>
   <div class="wrap">
-    <span>© <span id="y">2026</span> Brock Edwards</span>
+    <span>© <span class="y">2026</span> Brock Edwards</span>
     <span>Knoxville, Tennessee</span>
   </div>
 </footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>document.querySelectorAll('.y').forEach(e => e.textContent = new Date().getFullYear());</script>
 </body>
 </html>
