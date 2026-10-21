@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brock Edwards — Documentary · Video</title>
+<meta name="description" content="Brock Edwards is a documentary filmmaker and sociologist making films and video for organizations, educators, and communities.">
+<meta property="og:title" content="Brock Edwards — Documentary · Video">
+<meta property="og:description" content="Documentary films and video for organizations, educators, and communities.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brocknedwards.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111;
+    --paper: #fff;
+    --muted: #555;
+    --rule: #e2e2e2;
+    --narrow: 'Archivo Narrow', 'Arial Narrow', sans-serif;
+    --body: 'Archivo', system-ui, sans-serif;
+    --max: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* Header + wordmark (matches Brand/_source/wordmark.html) */
+  header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .mark { display: flex; align-items: stretch; gap: 9px; text-decoration: none; }
+  .mono { width: 44px; height: 43px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center;
+    font: 800 19px/1 var(--body); letter-spacing: -.03em; }
+  .stack { font: 700 23px/0.92 var(--narrow); text-transform: uppercase; letter-spacing: .02em; display: flex; flex-direction: column; justify-content: center; }
+  nav { display: flex; gap: 28px; }
+  nav a { font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--ink); }
+
+  .eyebrow { font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  h1, h2, h3 { font-family: var(--narrow); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; line-height: 1; margin: 0; }
+  h1 { font-size: clamp(40px, 7vw, 76px); }
+  h2 { font-size: clamp(30px, 4.5vw, 46px); margin-bottom: 28px; }
+  h3 { font-size: 22px; margin-bottom: 8px; }
+  section { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+
+  /* Reel */
+  .hero { padding: 64px 0 88px; }
+  .hero h1 { margin-bottom: 36px; max-width: 18ch; }
+  .reel { position: relative; aspect-ratio: 2.39 / 1; background: var(--ink); }
+  .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* Featured film */
+  .film { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .film p { margin: 0 0 16px; max-width: 52ch; }
+  .meta { font: 500 13px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .laurels { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
+  .laurels li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+  .laurels b { font-weight: 600; }
+  .laurels span { color: var(--muted); text-align: right; }
+  .btn { display: inline-block; margin-top: 8px; padding: 12px 20px; background: var(--ink); color: var(--paper); text-decoration: none;
+    font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; }
+  .btn:hover { background: #333; }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .services div { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .services p { margin: 0; color: #333; font-size: 16px; }
+
+  /* About + contact */
+  .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; }
+  .about p { margin: 0 0 16px; max-width: 60ch; }
+  .contact { background: var(--ink); color: var(--paper); border: 0; }
+  .contact .eyebrow { color: #aaa; }
+  .contact a.email { font: 700 clamp(26px, 4.5vw, 46px)/1.1 var(--narrow); text-transform: lowercase; text-decoration: none; border-bottom: 2px solid var(--paper); word-break: break-all; }
+  .contact p { color: #ccc; max-width: 52ch; margin: 24px 0 0; }
+
+  footer { padding: 28px 0; font: 500 12px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (max-width: 760px) {
+    nav { gap: 16px; }
+    nav a { letter-spacing: .14em; font-size: 12px; }
+    .stack { font-size: 19px; }
+    .mono { width: 36px; height: 36px; font-size: 16px; }
+    section { padding: 64px 0; }
+    .film, .about, .services { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 420px) { nav a[href="#about"] { display: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Brock Edwards, home">
+      <span class="mono">BE</span>
+      <span class="stack">Brock<br>Edwards</span>
+    </a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Documentary · Video</p>
+      <h1>Stories about people, place, and work.</h1>
+      <div class="reel">
+        <iframe src="https://player.vimeo.com/video/904550298?title=0&byline=0&portrait=0&dnt=1"
+          title="Brock Edwards — Reel" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap film">
+      <div>
+        <p class="eyebrow">Featured film</p>
+        <h2>The Table We Share</h2>
+        <p class="meta">Short documentary</p>
+        <!-- TODO(Brock): one or two sentences on what the film is about, in your words. -->
+        <p>A short documentary about food, community, and the people who bring them together.</p>
+        <!-- TODO(Brock): swap href for the trailer or screener link, or delete this button. -->
+        <a class="btn" href="#contact">Request a screener</a>
+      </div>
+      <div>
+        <p class="eyebrow">Festival recognition</p>
+        <ul class="laurels">
+          <li><b>Cannes World Film Festival</b><span>Best Food Film</span></li>
+          <li><b>New York International Film Awards</b><span>Best Social Justice · Best Student Film</span></li>
+          <li><b>Oniros Film Awards, New York</b><span>Best Ethnographic Film</span></li>
+          <li><b>Stockholm City Film Festival</b><span>Best Documentary</span></li>
+          <li><b>New York Movie Awards</b><span>Best Short Documentary</span></li>
+          <li><b>Tokyo Film &amp; Screenplay Awards</b><span>Best First-Time Director: Documentary</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What I make</p>
+      <h2>Services</h2>
+      <div class="services">
+        <div>
+          <h3>Documentary</h3>
+          <p>Short and long-form nonfiction built on time spent with the people on screen.</p>
+        </div>
+        <div>
+          <h3>Organizations</h3>
+          <p>Overview films and story videos for nonprofits, foundations, and mission-driven teams.</p>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <p>Course and lesson video with clear on-screen graphics, from scripting to final delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Brock Edwards</h2>
+      </div>
+      <div>
+        <!-- TODO(Brock): read this through and change anything that doesn't sound like you. -->
+        <p>I'm a documentary filmmaker and sociologist. Visual ethnography is at the center of how I work: I spend time with people before I point a camera at them, and the films come out of that time.</p>
+        <p>I hold a master's in sociology from Kansas State University and am a PhD student in sociology at the University of Tennessee, where I also teach. I take on documentary and video work for organizations and educators.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <!-- TODO(Brock): confirm this is the address you want public. -->
+      <a class="email" href="mailto:brockedwardsvideo@gmail.com">brockedwardsvideo@gmail.com</a>
+      <p>Tell me about the project, the timeline, and where the video will live. I reply within two business days.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Brock Edwards</span>
+    <span>Knoxville, Tennessee</span>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
