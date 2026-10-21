@@ -46,6 +46,7 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 
 /* Featured film */
 .hero { padding: 64px 0 88px; }
+.hero h1 { max-width: 18ch; margin-bottom: 36px; }
 .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
 .film img.poster { width: 100%; height: auto; display: block; }
 .film p { margin: 0 0 16px; max-width: 52ch; }
