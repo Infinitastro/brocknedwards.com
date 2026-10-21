@@ -85,7 +85,9 @@
   .services p { margin: 0; color: #333; font-size: 16px; }
 
   /* About + contact */
-  .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; }
+  .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: center; }
+  .about .headshot { width: 100%; height: auto; display: block; }
+  .awards-block { margin-top: 88px; }
   .about p { margin: 0 0 16px; max-width: 60ch; }
   .contact { background: var(--ink); color: var(--paper); border: 0; }
   .contact .eyebrow { color: #aaa; }
@@ -107,7 +109,6 @@
     .awards span { text-align: left; }
     .feature { padding: 24px; }
   }
-  @media (max-width: 420px) { nav a[href="#about"] { display: none; } }
 </style>
 </head>
 <body>
@@ -120,7 +121,6 @@
     </a>
     <nav>
       <a href="#work">Work</a>
-      <a href="#awards">Awards</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -174,24 +174,6 @@
     </div>
   </section>
 
-  <section id="awards">
-    <div class="wrap">
-      <p class="eyebrow">Recognition</p>
-      <h2>Awards</h2>
-      <a class="feature" href="https://www.filmcon.net/post/30-under-30-2026" target="_blank" rel="noopener">
-        <p class="eyebrow">Filmmakers Connect · 2026</p>
-        <h3>30 Under 30</h3>
-        <p>Named one of thirty emerging filmmakers across Filmmakers Connect's partner festivals. Read the feature →</p>
-      </a>
-      <ul class="awards">
-        <li><b>Best First-Time Director</b><span>New York Movie Awards · Tokyo Film &amp; Screenplay Awards · Florence Film Awards (Gold)</span></li>
-        <li><b>Best Director</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
-        <li><b>Best Editing</b><span>New York Movie Awards · New York International Film Awards (Honorable Mention)</span></li>
-        <li><b>Best Cinematography</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
-        <li><b>Best Indie Filmmaker</b><span>Top Shorts</span></li>
-      </ul>
-    </div>
-  </section>
 
   <section>
     <div class="wrap">
@@ -216,15 +198,30 @@
 
   <section id="about">
     <div class="wrap about">
+      <img class="headshot" src="img/headshot.jpg" width="800" height="1000" alt="Portrait of Brock Edwards" loading="lazy">
       <div>
         <p class="eyebrow">About</p>
         <h2>Brock Edwards</h2>
-      </div>
-      <div>
         <!-- TODO(Brock): read this through and change anything that doesn't sound like you. -->
         <p>I'm a documentary filmmaker and sociologist. Visual ethnography is at the center of how I work: I spend time with people before I point a camera at them, and the films come out of that time.</p>
         <p>I hold a master's in sociology from Kansas State University and am a PhD student in sociology at the University of Tennessee, where I also teach. I take on documentary and video work for organizations and educators.</p>
       </div>
+    </div>
+    <div class="wrap awards-block">
+      <p class="eyebrow">Recognition</p>
+      <h2>Awards</h2>
+      <a class="feature" href="https://www.filmcon.net/post/30-under-30-2026" target="_blank" rel="noopener">
+        <p class="eyebrow">Filmmakers Connect · 2026</p>
+        <h3>30 Under 30</h3>
+        <p>Named one of thirty emerging filmmakers across Filmmakers Connect's partner festivals. Read the feature →</p>
+      </a>
+      <ul class="awards">
+        <li><b>Best First-Time Director</b><span>New York Movie Awards · Tokyo Film &amp; Screenplay Awards · Florence Film Awards (Gold)</span></li>
+        <li><b>Best Director</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
+        <li><b>Best Editing</b><span>New York Movie Awards · New York International Film Awards (Honorable Mention)</span></li>
+        <li><b>Best Cinematography</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
+        <li><b>Best Indie Filmmaker</b><span>Top Shorts</span></li>
+      </ul>
     </div>
   </section>
 
