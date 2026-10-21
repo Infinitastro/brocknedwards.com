@@ -45,7 +45,7 @@
   h1 { font-size: clamp(40px, 7vw, 76px); }
   h2 { font-size: clamp(30px, 4.5vw, 46px); margin-bottom: 28px; }
   h3 { font-size: 22px; margin-bottom: 8px; }
-  section { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+  section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 76px; }
 
   /* Reel */
   .hero { padding: 64px 0 88px; }
@@ -54,13 +54,23 @@
   .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
   /* Featured film */
-  .film { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
+  .film img.poster { width: 100%; height: auto; display: block; }
   .film p { margin: 0 0 16px; max-width: 52ch; }
   .meta { font: 500 13px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
-  .laurels { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
-  .laurels li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
-  .laurels b { font-weight: 600; }
-  .laurels span { color: var(--muted); text-align: right; }
+  .stills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 56px; }
+  .stills img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+
+  /* Awards */
+  .feature { display: block; text-decoration: none; background: var(--ink); color: var(--paper); padding: 32px; margin-bottom: 40px; }
+  .feature h3 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 10px; }
+  .feature p { margin: 0; color: #ccc; max-width: 60ch; }
+  .feature .eyebrow { color: #aaa; }
+  .feature:hover h3 { text-decoration: underline; text-underline-offset: 6px; }
+  .awards { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
+  .awards li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .awards b { font: 700 19px var(--narrow); text-transform: uppercase; letter-spacing: .02em; }
+  .awards span { color: var(--muted); text-align: right; font-size: 15px; }
   .btn { display: inline-block; margin-top: 8px; padding: 12px 20px; background: var(--ink); color: var(--paper); text-decoration: none;
     font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; }
   .btn:hover { background: #333; }
@@ -88,6 +98,10 @@
     .mono { width: 36px; height: 36px; font-size: 16px; }
     section { padding: 64px 0; }
     .film, .about, .services { grid-template-columns: 1fr; gap: 32px; }
+    .stills { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
+    .awards li { flex-direction: column; gap: 2px; }
+    .awards span { text-align: left; }
+    .feature { padding: 24px; }
   }
   @media (max-width: 420px) { nav a[href="#about"] { display: none; } }
 </style>
@@ -102,6 +116,7 @@
     </a>
     <nav>
       <a href="#work">Work</a>
+      <a href="#awards">Awards</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -121,27 +136,53 @@
   </section>
 
   <section id="work">
-    <div class="wrap film">
-      <div>
-        <p class="eyebrow">Featured film</p>
-        <h2>The Table We Share</h2>
-        <p class="meta">Short documentary</p>
-        <!-- TODO(Brock): one or two sentences on what the film is about, in your words. -->
-        <p>A short documentary about food, community, and the people who bring them together.</p>
-        <!-- TODO(Brock): swap href for the trailer or screener link, or delete this button. -->
-        <a class="btn" href="#contact">Request a screener</a>
+    <div class="wrap">
+      <div class="film">
+        <img class="poster" src="img/ttws-poster.jpg" width="1000" height="1500"
+          alt="Poster for The Table We Share, with festival laurels">
+        <div>
+          <p class="eyebrow">Featured film</p>
+          <h2>The Table We Share</h2>
+          <p class="meta">Short documentary · Emmaus House, Garden City, Kansas</p>
+          <!-- TODO(Brock): one or two sentences on what the film is about, in your words. -->
+          <p>A short documentary filmed at Emmaus House in Garden City, Kansas.</p>
+          <p class="meta">Co-director · Editor · Cinematographer</p>
+          <!-- TODO(Brock): swap href for the trailer or screener link, or delete this button. -->
+          <a class="btn" href="#contact">Request a screener</a>
+        </div>
       </div>
-      <div>
-        <p class="eyebrow">Festival recognition</p>
-        <ul class="laurels">
-          <li><b>Cannes World Film Festival</b><span>Best Food Film</span></li>
-          <li><b>New York International Film Awards</b><span>Best Social Justice · Best Student Film</span></li>
-          <li><b>Oniros Film Awards, New York</b><span>Best Ethnographic Film</span></li>
-          <li><b>Stockholm City Film Festival</b><span>Best Documentary</span></li>
-          <li><b>New York Movie Awards</b><span>Best Short Documentary</span></li>
-          <li><b>Tokyo Film &amp; Screenplay Awards</b><span>Best First-Time Director: Documentary</span></li>
-        </ul>
+      <div class="stills">
+        <img src="img/stills/ttws-still-1.jpg" alt="A volunteer smiles while unpacking food boxes in a pantry" loading="lazy">
+        <img src="img/stills/ttws-still-2.jpg" alt="A man in a work jacket stands in a doorway" loading="lazy">
+        <img src="img/stills/ttws-still-3.jpg" alt="A little free library beside red stairs" loading="lazy">
+        <img src="img/stills/ttws-still-4.jpg" alt="A woman wrapped in a blanket outside Emmaus House" loading="lazy">
+        <img src="img/stills/ttws-still-5.jpg" alt="People unloading boxes from a truck" loading="lazy">
+        <img src="img/stills/ttws-still-6.jpg" alt="A woman pushes a cart across an empty lot" loading="lazy">
       </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="wrap">
+      <p class="eyebrow">Recognition</p>
+      <h2>Awards</h2>
+      <a class="feature" href="https://www.filmcon.net/post/30-under-30-2026" target="_blank" rel="noopener">
+        <p class="eyebrow">Filmmakers Connect · 2026</p>
+        <h3>30 Under 30</h3>
+        <p>Named one of thirty emerging filmmakers across Filmmakers Connect's partner festivals. Read the feature →</p>
+      </a>
+      <ul class="awards">
+        <li><b>Best First-Time Director</b><span>New York Movie Awards · Tokyo Film &amp; Screenplay Awards · Florence Film Awards (Gold)</span></li>
+        <li><b>Best Director</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
+        <li><b>Best Editing</b><span>New York Movie Awards · New York International Film Awards (Honorable Mention)</span></li>
+        <li><b>Best Cinematography</b><span>Florence Film Awards (Silver) · New York Movie Awards (Silver)</span></li>
+        <li><b>Best Screenplay</b><span>New York Movie Awards</span></li>
+        <li><b>Best Indie Filmmaker</b><span>Top Shorts</span></li>
+        <li><b>Best Food Film</b><span>World Film Festival in Cannes</span></li>
+        <li><b>Best Social Justice Film</b><span>New York International Film Awards</span></li>
+        <li><b>Best Ethnographic Film</b><span>Oniros Film Awards, New York</span></li>
+        <li><b>Best Documentary</b><span>Stockholm City Film Festival</span></li>
+      </ul>
     </div>
   </section>
 
