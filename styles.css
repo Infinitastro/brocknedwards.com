@@ -1,6 +1,7 @@
 :root {
   --ink: #111;
-  --paper: #fff;
+  --paper: #f5f3ee;
+  --dot: rgba(17, 17, 17, .09);
   --muted: #555;
   --rule: #e2e2e2;
   --narrow: 'Archivo Narrow', 'Arial Narrow', sans-serif;
@@ -9,7 +10,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--paper); }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--paper) radial-gradient(var(--dot) 1px, transparent 1.4px) 0 0 / 20px 20px; color: var(--ink); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 img { max-width: 100%; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -126,6 +127,18 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
 .project-info .awards span { text-align: left; }
 .stills-label { margin: 56px 0 0; }
 .project-page .stills { margin-top: 14px; }
+.project-page .stills img { aspect-ratio: var(--ar, 16 / 9); }
+
+/* Shot-by-shot timeline */
+.timeline { list-style: none; margin: 24px 0 0; padding: 0 0 0 28px; border-left: 2px solid var(--ink); }
+.timeline li { position: relative; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; padding: 0 0 48px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -36px; top: 0; width: 14px; height: 14px; background: var(--ink); border-radius: 50%; }
+.timeline .tc { position: absolute; left: 0; top: -26px; font: 500 13px var(--narrow); letter-spacing: .18em; color: var(--muted); }
+.timeline li { margin-top: 30px; }
+.timeline img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.timeline h3 { font-size: 22px; margin: 0 0 10px; }
+.timeline p { margin: 0; color: #333; max-width: 46ch; }
 
 .play { position: absolute; left: 16px; bottom: 16px; background: var(--ink); color: var(--paper); padding: 8px 14px;
   font: 500 12px var(--narrow); letter-spacing: .22em; text-transform: uppercase; }
@@ -156,6 +169,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .page-head { padding: 48px 0 0; }
   .film, .about, .services, .project-info, .featured-text, .reel-row, .cards.two, .cards.three { grid-template-columns: 1fr; gap: 32px; }
   .featured-text { gap: 12px; }
+  .timeline li { grid-template-columns: 1fr; gap: 16px; }
   .featured .thumb img { aspect-ratio: 16 / 9; }
   .stills { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
   .awards li { flex-direction: column; gap: 2px; }
