@@ -78,7 +78,11 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
   height: .52em; background: var(--accent); transform: rotate(-2deg); }
 .hero-word { display: block; white-space: nowrap; }
 .hero-amp { color: var(--accent-ink); font: italic 400 .92em Georgia, serif; text-transform: none; }
-.hero .reel { grid-column: 2; grid-row: 1 / 3; }
+.hero-inquiry { grid-column: 1; grid-row: 3; align-self: start; margin-top: 24px; }
+.hero-inquiry p { margin: 0 0 16px; max-width: 34ch; font-size: 15px; line-height: 1.5; }
+.hero-inquiry .btn { margin-top: 0; letter-spacing: .08em; }
+.hero-inquiry .btn:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 4px; }
+.hero .reel { grid-column: 2; grid-row: 1 / 4; }
 
 /* Editorial bridge between the reel and featured story */
 .story-bridge { padding: 0; border: 0; }
@@ -357,6 +361,8 @@ body.gallery-open { overflow: hidden; }
 .contact .eyebrow { color: #aaa; }
 .contact a.email { font: 700 clamp(26px, 4.5vw, 46px)/1.1 var(--narrow); text-transform: lowercase; text-decoration: none; border-bottom: 2px solid var(--paper); word-break: break-all; }
 .contact p { color: #ccc; max-width: 52ch; margin: 24px 0 0; }
+.contact > .wrap > a.email { display: inline-block; margin-top: 24px; }
+.contact > .wrap > a.email:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 
 footer { padding: 28px 0; font: 500 12px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -397,8 +403,9 @@ h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
 @media (max-width: 800px) {
   .hero .wrap { grid-template-columns: 1fr; }
   .hero .eyebrow { grid-column: 1; grid-row: 1; }
-  .hero h1 { grid-column: 1; grid-row: 2; margin-bottom: 28px; }
-  .hero .reel { grid-column: 1; grid-row: 3; }
+  .hero h1 { grid-column: 1; grid-row: 2; }
+  .hero-inquiry { grid-column: 1; grid-row: 3; margin: 24px 0 32px; }
+  .hero .reel { grid-column: 1; grid-row: 4; }
 }
 @media (max-width: 760px) {
   .note-reel { display: none; }
