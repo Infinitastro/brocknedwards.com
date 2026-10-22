@@ -5,11 +5,13 @@
   const svg = tl.querySelector('.curve');
   const track = svg.querySelector('.track');
   const fill = svg.querySelector('.fill');
+  const sketch = svg.querySelector('.sketch');
+  const accentSketch = svg.querySelector('.accent-sketch');
   const items = [...tl.querySelectorAll('li')];
   const figs = items.map(li => li.querySelector('figure'));
   const still = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 760px)');
-  let length = 0, dots = [];
+  let length = 0, sketchLength = 0, accentLength = 0, dots = [];
 
   function draw() {
     const w = tl.clientWidth, h = tl.clientHeight, narrow = w < 560;
@@ -22,15 +24,27 @@
     });
     pts.push([narrow ? 12 : w / 2, h]);
     let d = `M${pts[0][0]},${pts[0][1]}`;
+    let sketchD = d;
+    let accentD = d;
     for (let i = 1; i < pts.length; i++) {
       const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], my = (y1 - y0) / 2;
       d += ` C${x0},${y0 + my} ${x1},${y1 - my} ${x1},${y1}`;
+      const wobble = (narrow ? 8 : 14) * (i % 2 ? 1 : -1);
+      sketchD += ` C${x0 + wobble},${y0 + my} ${x1 + wobble * .6},${y1 - my} ${x1},${y1}`;
+      const accentWobble = (narrow ? 14 : 22) * (i % 2 ? -1 : 1);
+      accentD += ` C${x0 + accentWobble},${y0 + my} ${x1 + accentWobble * .65},${y1 - my} ${x1},${y1}`;
     }
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     track.setAttribute('d', d);
     fill.setAttribute('d', d);
+    sketch.setAttribute('d', sketchD);
+    accentSketch.setAttribute('d', accentD);
     length = fill.getTotalLength();
+    sketchLength = sketch.getTotalLength();
+    accentLength = accentSketch.getTotalLength();
     fill.style.strokeDasharray = length;
+    sketch.style.strokeDasharray = sketchLength;
+    accentSketch.style.strokeDasharray = accentLength;
     dots.forEach(c => c.remove());
     dots = pts.slice(1, -1).map(([x, y]) => {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -45,6 +59,8 @@
     const vh = innerHeight, r = tl.getBoundingClientRect();
     const progress = still.matches ? 1 : Math.min(1, Math.max(0, (vh * 0.6 - r.top) / r.height));
     fill.style.strokeDashoffset = length * (1 - progress);
+    sketch.style.strokeDashoffset = sketchLength * (1 - progress);
+    accentSketch.style.strokeDashoffset = accentLength * (1 - progress);
     dots.forEach((dot, i) => {
       const y = items[i].getBoundingClientRect().top + items[i].offsetHeight / 2;
       dot.classList.toggle('is-passed', still.matches || y <= vh * 0.6);
@@ -73,6 +89,16 @@
   const galleryTime = gallery.querySelector('.lightbox-time');
   const galleryCount = gallery.querySelector('.lightbox-count');
   let current = 0;
+  let travelImage = null;
+  let openingButton = null;
+
+  function finishOpening() {
+    if (travelImage) travelImage.remove();
+    travelImage = null;
+    if (openingButton) openingButton.style.removeProperty('visibility');
+    openingButton = null;
+    galleryImage.style.removeProperty('visibility');
+  }
 
   function showStill(index) {
     current = (index + openButtons.length) % openButtons.length;
@@ -86,6 +112,7 @@
 
   function changeStill(delta) {
     if (gallery.classList.contains('is-closing')) return;
+    finishOpening();
     galleryImage.getAnimations().forEach(animation => animation.cancel());
     showStill(current + delta);
     if (!still.matches) galleryImage.animate([
@@ -96,6 +123,7 @@
 
   function closeGallery() {
     if (!gallery.open || gallery.classList.contains('is-closing')) return;
+    finishOpening();
     galleryImage.getAnimations().forEach(animation => animation.cancel());
     if (still.matches) { gallery.close(); return; }
     gallery.classList.add('is-closing');
@@ -104,29 +132,35 @@
 
   openButtons.forEach((button, index) => {
     button.setAttribute('aria-label', `View still ${index + 1} of ${openButtons.length}: ${figs[index].querySelector('img').alt}`);
-    button.addEventListener('pointermove', event => {
-      const rect = button.getBoundingClientRect();
-      button.style.setProperty('--spot-x', `${((event.clientX - rect.left) / rect.width * 100).toFixed(1)}%`);
-      button.style.setProperty('--spot-y', `${((event.clientY - rect.top) / rect.height * 100).toFixed(1)}%`);
-    });
-    button.addEventListener('pointerleave', () => {
-      button.style.removeProperty('--spot-x');
-      button.style.removeProperty('--spot-y');
-    });
     button.addEventListener('click', () => {
       const start = button.getBoundingClientRect();
       showStill(index);
+      if (!still.matches) {
+        galleryImage.style.visibility = 'hidden';
+        openingButton = button;
+        button.style.visibility = 'hidden';
+      }
       gallery.showModal();
       document.body.classList.add('gallery-open');
       if (still.matches) return;
       const end = galleryImage.getBoundingClientRect();
-      if (!end.width || !end.height) return;
-      const dx = start.left + start.width / 2 - end.left - end.width / 2;
-      const dy = start.top + start.height / 2 - end.top - end.height / 2;
-      galleryImage.animate([
-        { transform: `translate(${dx}px, ${dy}px) scale(${start.width / end.width}, ${start.height / end.height})`, opacity: .78 },
-        { transform: 'translate(0, 0) scale(1)', opacity: 1 }
-      ], { duration: 780, easing: 'cubic-bezier(.16, 1, .3, 1)' });
+      if (!end.width || !end.height) { finishOpening(); return; }
+      travelImage = document.createElement('div');
+      travelImage.setAttribute('aria-hidden', 'true');
+      travelImage.className = 'lightbox-travel';
+      const travelStill = button.querySelector('img').cloneNode();
+      travelStill.removeAttribute('loading');
+      travelStill.alt = '';
+      travelImage.appendChild(travelStill);
+      Object.assign(travelImage.style, {
+        left: `${end.left}px`, top: `${end.top}px`, width: `${end.width}px`, height: `${end.height}px`
+      });
+      gallery.appendChild(travelImage);
+      const animation = travelImage.animate([
+        { transform: `translate(${start.left - end.left}px, ${start.top - end.top}px) scale(${start.width / end.width}, ${start.height / end.height})` },
+        { transform: 'none' }
+      ], { duration: 850, easing: 'ease-in-out' });
+      animation.onfinish = finishOpening;
     });
   });
   gallery.querySelector('.lightbox-close').addEventListener('click', closeGallery);
@@ -141,6 +175,7 @@
   gallery.addEventListener('cancel', event => { event.preventDefault(); closeGallery(); });
   gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
   gallery.addEventListener('close', () => {
+    finishOpening();
     document.body.classList.remove('gallery-open');
     gallery.classList.remove('is-closing');
   });

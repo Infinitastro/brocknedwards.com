@@ -226,20 +226,18 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
 .curve-tl li:nth-child(odd) figure { transform-origin: left center; }
 .curve-tl li:nth-child(even) figure { transform-origin: right center; }
 .still-open { position: relative; display: block; width: 100%; padding: 0; border: 0; overflow: hidden; background: var(--ink);
-  cursor: pointer; box-shadow: 0 10px 30px rgba(17,17,17,.12);
-  transition: transform .8s cubic-bezier(.22, 1, .36, 1), box-shadow .8s cubic-bezier(.22, 1, .36, 1); }
+  cursor: pointer; box-shadow: 5px 5px 0 var(--accent); will-change: transform;
+  transition: transform .3s ease, box-shadow .3s ease; }
 .curve-tl li:nth-child(odd) .still-open { transform-origin: left center; }
 .curve-tl li:nth-child(even) .still-open { transform-origin: right center; }
-.still-open img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;
-  transition: transform .85s cubic-bezier(.22, 1, .36, 1); }
+.still-open img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
 .still-open::after { content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%),
+  background: radial-gradient(circle at 50% 50%,
     rgba(232,121,43,.1) 0%, transparent 36%, rgba(0,0,0,.18) 100%);
-  opacity: 0; transition: opacity .7s ease; }
-.still-open:hover, .still-open:focus-visible { transform: scale(1.06);
-  box-shadow: 0 18px 42px rgba(17,17,17,.22), 0 0 0 2px rgba(232,121,43,.55); }
-.still-open:hover img, .still-open:focus-visible img { transform: scale(1.04); }
-.still-open:hover::after, .still-open:focus-visible::after { opacity: 1; }
+  opacity: 0; transition: opacity .3s ease; }
+.curve-tl figure:hover .still-open, .still-open:focus-visible { transform: translate(3px, 3px) scale(1.09);
+  box-shadow: 2px 2px 0 var(--accent); }
+.curve-tl figure:hover .still-open::after, .still-open:focus-visible::after { opacity: 1; }
 .still-open:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .curve-tl figcaption { margin-top: 8px; font: 500 12px var(--narrow); letter-spacing: .18em; color: var(--muted); }
 .curve-tl li:nth-child(even) figcaption { text-align: right; }
@@ -247,6 +245,8 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
 .curve path { fill: none; stroke-width: 2; stroke-linecap: round; }
 .curve .track { stroke: #d6d1c6; }
 .curve .fill { stroke: var(--ink); }
+.curve .sketch { stroke: var(--ink); stroke-width: 1.5; opacity: .8; }
+.curve .accent-sketch { stroke: var(--accent-ink); stroke-width: 1.5; opacity: .9; }
 .curve circle { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
 .curve circle.is-passed { fill: var(--ink); }
 @media (min-width: 761px) {
@@ -263,12 +263,12 @@ body.gallery-open { overflow: hidden; }
   background: transparent; color: var(--paper); overflow: visible; }
 .still-lightbox::backdrop { background: radial-gradient(ellipse 68% 72% at 50% 46%,
   rgba(8,8,8,.72) 0%, rgba(8,8,8,.86) 65%, rgba(0,0,0,.96) 100%); }
-.still-lightbox[open]:not(.is-closing)::backdrop { animation: gallery-backdrop-in .65s ease-out both; }
+.still-lightbox[open]:not(.is-closing)::backdrop { animation: gallery-backdrop-in .85s ease-in-out both; }
 .still-lightbox.is-closing::backdrop { animation: gallery-backdrop-out .26s ease-in both; }
 @keyframes gallery-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes gallery-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
 .still-lightbox[open]:not(.is-closing) .lightbox-inner button,
-.still-lightbox[open]:not(.is-closing) .lightbox-figure figcaption { animation: gallery-controls-in .45s .2s both; }
+.still-lightbox[open]:not(.is-closing) .lightbox-figure figcaption { animation: gallery-controls-in .425s .425s ease-in-out both; }
 @keyframes gallery-controls-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .still-lightbox.is-closing .lightbox-inner { animation: gallery-content-out .26s ease-in both; }
 @keyframes gallery-content-out { to { opacity: 0; transform: scale(.97); } }
@@ -284,6 +284,13 @@ body.gallery-open { overflow: hidden; }
 .lightbox-figure img { display: block; width: min(100%, calc((100dvh - 140px) * 1.775)); height: auto;
   max-height: calc(100dvh - 140px); margin: 0 auto;
   object-fit: contain; box-shadow: 0 0 0 1px rgba(245,243,238,.12), 0 0 64px rgba(232,121,43,.12), 0 30px 90px rgba(0,0,0,.7); }
+.lightbox-travel { position: fixed; display: block; z-index: 2; pointer-events: none; overflow: hidden; transform-origin: top left; will-change: transform;
+  box-shadow: 0 0 0 1px rgba(245,243,238,.12), 0 0 64px rgba(232,121,43,.12), 0 30px 90px rgba(0,0,0,.7); }
+.lightbox-travel img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lightbox-travel::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(232,121,43,.1) 0%, transparent 36%, rgba(0,0,0,.18) 100%);
+  animation: gallery-spotlight-out .85s ease-in-out both; }
+@keyframes gallery-spotlight-out { from { opacity: 1; } to { opacity: 0; } }
 .lightbox-figure figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 14px;
   font: 500 13px var(--narrow); letter-spacing: .16em; text-transform: uppercase; color: #ddd; }
 .lightbox-prev { grid-column: 1; grid-row: 2; }
@@ -298,7 +305,8 @@ body.gallery-open { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .still-lightbox[open]::backdrop, .still-lightbox .lightbox-inner button,
-  .still-lightbox .lightbox-figure figcaption, .still-lightbox.is-closing .lightbox-inner { animation: none; }
+  .still-lightbox .lightbox-figure figcaption, .still-lightbox.is-closing .lightbox-inner,
+  .lightbox-travel::after { animation: none; }
 }
 
 /* Film coverage */
@@ -403,7 +411,9 @@ h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
   .project-info .side { position: static; }
   .curve-tl li, .curve-tl li:nth-child(even) { justify-content: flex-end; }
   .curve-tl figure { width: calc(100% - 36px); }
-  .curve-tl li:nth-child(n) figure { transform-origin: center; }
+  .curve-tl li:nth-child(n) figure { transform-origin: right center; }
+  .curve-tl li:nth-child(n) .still-open { transform-origin: right center; }
+  .curve-tl figure:hover .still-open, .still-open:focus-visible { transform: translate(0, 3px) scale(1.09); }
   .curve-tl li:nth-child(even) figcaption { text-align: left; }
   .featured .thumb img { aspect-ratio: 16 / 9; }
   .stills { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
