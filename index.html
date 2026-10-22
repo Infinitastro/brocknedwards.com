@@ -34,6 +34,7 @@
   </div>
 </header>
 
+<div class="film-spotlight" aria-hidden="true"></div>
 <main>
 
 
@@ -72,8 +73,10 @@
   <section id="film">
     <div class="wrap">
       <div class="film">
-        <img class="poster" src="img/ttws-poster.jpg" width="1000" height="1500"
-          alt="Poster for The Table We Share, with festival laurels">
+        <a class="film-poster" href="work/the-table-we-share.html" aria-label="View The Table We Share film page">
+          <img class="poster" src="img/ttws-poster.jpg" width="1000" height="1500"
+            alt="Poster for The Table We Share, with festival laurels">
+        </a>
         <div>
           <h2 class="titled"><span class="lead">Docushort</span> The Table We Share</h2>
           <p class="meta">Emmaus House · Garden City, Kansas</p>
@@ -202,6 +205,29 @@ reelPoster?.addEventListener('click', event => {
   player.allowFullscreen = true;
   reelPoster.replaceWith(player);
 });
+const filmPoster = document.querySelector('.film-poster');
+const filmSpotlight = document.querySelector('.film-spotlight');
+function positionFilmSpotlight() {
+  if (!filmPoster || !filmSpotlight || !document.body.classList.contains('film-spotlit')) return;
+  const rect = filmPoster.getBoundingClientRect();
+  filmSpotlight.style.setProperty('--spot-x', `${rect.left + rect.width / 2}px`);
+  filmSpotlight.style.setProperty('--spot-y', `${rect.top + rect.height / 2}px`);
+  filmSpotlight.style.setProperty('--spot-rx', `${rect.width * .85}px`);
+  filmSpotlight.style.setProperty('--spot-ry', `${rect.height * .75}px`);
+}
+function showFilmSpotlight() {
+  document.body.classList.add('film-spotlit');
+  positionFilmSpotlight();
+}
+function hideFilmSpotlight() {
+  document.body.classList.remove('film-spotlit');
+}
+filmPoster?.addEventListener('pointerenter', showFilmSpotlight);
+filmPoster?.addEventListener('pointerleave', hideFilmSpotlight);
+filmPoster?.addEventListener('focus', showFilmSpotlight);
+filmPoster?.addEventListener('blur', hideFilmSpotlight);
+addEventListener('scroll', positionFilmSpotlight, { passive: true });
+addEventListener('resize', positionFilmSpotlight);
 </script>
 </body>
 </html>
