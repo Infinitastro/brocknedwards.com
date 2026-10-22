@@ -4,6 +4,7 @@
   --dot: rgba(17, 17, 17, .09);
   --charcoal: #262626;
   --accent: #e8792b;
+  --accent-ink: #b5500c; /* darker orange for text on the off-white */
   --muted: #555;
   --rule: #e2e2e2;
   --narrow: 'Archivo Narrow', 'Arial Narrow', sans-serif;
@@ -86,6 +87,15 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .services-band .services p { color: #d9d6cf; }
 .services-band .more { color: var(--paper); border-bottom-color: var(--accent); }
 .services-band .more:hover { color: var(--accent); }
+
+/* Home awards, pulled up under the featured film */
+#film { padding-bottom: 32px; border-bottom: 0; }
+#awards { padding-top: 32px; }
+#awards > .wrap > .eyebrow { color: var(--accent-ink); }
+#awards .feature .eyebrow { color: var(--accent); }
+#awards .feature:hover h3 { color: var(--accent); }
+#awards .awards { border-top-color: var(--accent); }
+#awards .awards b { color: var(--accent-ink); }
 .services ul { margin: 16px 0 0; padding-left: 18px; color: #333; font-size: 15px; }
 .services li { margin-bottom: 6px; }
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
