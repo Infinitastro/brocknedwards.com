@@ -81,7 +81,12 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 
 /* Home services band */
 .hero { padding-bottom: 40px; border-bottom: 0; }
-.services-band { background: var(--charcoal); color: var(--paper); border: 0; padding: 64px 0 72px; }
+.services-band { color: var(--paper); padding: 0 0 72px; }
+.services-band .panel { padding: 48px 48px 44px; background: var(--charcoal) radial-gradient(rgba(245, 243, 238, .07) 1px, transparent 1.4px) 0 0 / 20px 20px; }
+.services-band h2 { margin-bottom: 32px; }
+.services-band .services { counter-reset: svc; }
+.services-band .services h3::before { counter-increment: svc; content: "0" counter(svc); display: block; margin-bottom: 8px;
+  font: 500 13px var(--narrow); letter-spacing: .18em; color: var(--accent); }
 .services-band .eyebrow { color: var(--accent); }
 .services-band .services > div { border-top-color: var(--accent); }
 .services-band .services p { color: #d9d6cf; }
@@ -198,6 +203,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .page-head { padding: 48px 0 0; }
   .film, .about, .services, .project-info, .featured-text, .reel-row, .cards.two, .cards.three { grid-template-columns: 1fr; gap: 32px; }
   .featured-text { gap: 12px; }
+  .services-band .panel { padding: 32px 22px; }
   .project-info.has-timeline { grid-template-columns: 1fr; }
   .project-info .side { position: static; }
   .curve-tl li, .curve-tl li:nth-child(even) { justify-content: flex-end; }
