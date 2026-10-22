@@ -49,8 +49,13 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* Featured film */
-.hero { padding: 64px 0 88px; }
-.hero h1 { max-width: 18ch; margin-bottom: 36px; }
+.hero { padding: 64px 0 0; border-bottom: 0; }
+.hero h1 { display: grid; grid-template-columns: 1fr .85fr 1.6fr; column-gap: 24px;
+  margin-bottom: 36px; font-size: clamp(44px, 5.4vw, 64px); line-height: .94; letter-spacing: -.035em; }
+.hero-lead { grid-column: 1 / -1; margin-bottom: 18px; font: 400 clamp(25px, 2.7vw, 36px)/1.1 var(--body);
+  letter-spacing: -.05em; text-transform: none; }
+.hero-word { display: block; padding-top: 18px; border-top: 4px solid var(--ink); white-space: nowrap; }
+.hero-word-end { border-top-color: var(--accent); }
 .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
 .film img.poster { width: 100%; height: auto; display: block; }
 .film p { margin: 0 0 16px; max-width: 52ch; }
@@ -79,15 +84,10 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .services > div { border-top: 2px solid var(--ink); padding-top: 18px; }
 .services p { margin: 0; color: #333; font-size: 16px; }
 
-/* Hero headline highlight: an orange marker block under each line */
-.hero h1 .hl { background: linear-gradient(transparent 52%, var(--accent) 52%, var(--accent) 92%, transparent 92%);
-  -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 .08em; }
-.hero h1:has(.hl) { margin-left: -.08em; }
-
 /* Home services band */
-.hero { padding-bottom: 40px; border-bottom: 0; }
-.services-band { color: var(--paper); padding: 0 0 72px; }
-.services-band .panel { padding: 48px 48px 44px; background: var(--charcoal) radial-gradient(rgba(245, 243, 238, .07) 1px, transparent 1.4px) 0 0 / 20px 20px; }
+.services-band { color: var(--paper); padding: 0;
+  background: var(--charcoal) radial-gradient(rgba(245, 243, 238, .07) 1px, transparent 1.4px) 0 0 / 20px 20px; }
+.services-band .panel { padding: 48px 0 72px; }
 .services-band h2 { margin-bottom: 32px; }
 .services-band .services { counter-reset: svc; }
 .services-band .services h3::before { counter-increment: svc; content: "0" counter(svc); display: block; margin-bottom: 8px;
@@ -208,7 +208,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .page-head { padding: 48px 0 0; }
   .film, .about, .services, .project-info, .featured-text, .reel-row, .cards.two, .cards.three { grid-template-columns: 1fr; gap: 32px; }
   .featured-text { gap: 12px; }
-  .services-band .panel { padding: 32px 22px; }
+  .hero h1 { grid-template-columns: 1fr; row-gap: 0; font-size: clamp(48px, 10vw, 70px); }
+  .hero-lead { grid-column: 1; margin-bottom: 10px; }
+  .hero-word { padding: 12px 0 14px; border-top-width: 2px; }
+  .hero, .services-band { padding-bottom: 0; }
+  .services-band .panel { padding: 32px 0 64px; }
   .project-info.has-timeline { grid-template-columns: 1fr; }
   .project-info .side { position: static; }
   .curve-tl li, .curve-tl li:nth-child(even) { justify-content: flex-end; }
@@ -223,5 +227,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 }
 @media (max-width: 420px) {
   .stack { display: none; }
+  .hero .eyebrow { font-size: 11px; letter-spacing: .16em; }
+  .hero h1 { font-size: clamp(40px, 11.3vw, 48px); }
   .steps { grid-template-columns: 1fr; }
 }
