@@ -20,6 +20,11 @@
   function setupGallery(buttons, gallery, captionFor) {
     if (!buttons.length || !gallery) return;
     const galleryImage = gallery.querySelector('.lightbox-figure img');
+    const galleryInner = gallery.querySelector('.lightbox-inner');
+    const spotlight = document.createElement('div');
+    spotlight.className = 'lightbox-spotlight';
+    spotlight.setAttribute('aria-hidden', 'true');
+    gallery.prepend(spotlight);
     const galleryTime = gallery.querySelector('.lightbox-time');
     const galleryCount = gallery.querySelector('.lightbox-count');
     let current = 0;
@@ -29,8 +34,15 @@
     let openingButton = null;
     let lastButton = null;
     let closingTimer = null;
+    let openingAnimations = [];
 
-    function finishOpening() {
+    const openingDuration = 1150;
+    const openingEase = 'cubic-bezier(.45, 0, .2, 1)';
+
+    function finishOpening(spotlightOpacity = '1') {
+      openingAnimations.forEach(animation => animation.cancel());
+      openingAnimations = [];
+      spotlight.style.opacity = spotlightOpacity;
       if (movingImage && imagePlaceholder?.isConnected) imagePlaceholder.replaceWith(movingImage);
       movingImage = null;
       imagePlaceholder = null;
@@ -65,10 +77,15 @@
 
     function closeGallery() {
       if (!gallery.open || gallery.classList.contains('is-closing')) return;
-      finishOpening();
+      const spotlightOpacity = getComputedStyle(spotlight).opacity;
+      finishOpening(spotlightOpacity);
       galleryImage.getAnimations().forEach(animation => animation.cancel());
       if (reducedMotion.matches) { gallery.close(); return; }
       gallery.classList.add('is-closing');
+      spotlight.animate([
+        { opacity: spotlightOpacity },
+        { opacity: 0 }
+      ], { duration: 260, easing: 'ease-in', fill: 'forwards' });
       closingTimer = setTimeout(() => gallery.close(), 260);
     }
 
@@ -94,7 +111,7 @@
         }
         gallery.showModal();
         document.body.classList.add('gallery-open');
-        if (reducedMotion.matches) return;
+        if (reducedMotion.matches) { spotlight.style.opacity = '1'; return; }
         const end = galleryImage.getBoundingClientRect();
         if (!end.width || !end.height) { finishOpening(); return; }
         travelImage = document.createElement('div');
@@ -106,17 +123,34 @@
         image.replaceWith(imagePlaceholder);
         movingImage = image;
         travelImage.appendChild(image);
+        const travelGlow = document.createElement('span');
+        travelGlow.className = 'lightbox-travel-glow';
+        travelImage.appendChild(travelGlow);
         Object.assign(travelImage.style, {
           left: `${end.left}px`, top: `${end.top}px`, width: `${end.width}px`, height: `${end.height}px`
         });
         const startTransform = `translate(${start.left - end.left}px, ${start.top - end.top}px) scale(${start.width / end.width}, ${start.height / end.height})`;
         travelImage.style.transform = startTransform;
         gallery.appendChild(travelImage);
-        const animation = travelImage.animate([
+        const travelAnimation = travelImage.animate([
           { transform: startTransform },
           { transform: 'none' }
-        ], { duration: 1150, easing: 'ease-in-out', fill: 'forwards' });
-        animation.onfinish = finishOpening;
+        ], { duration: openingDuration, easing: openingEase, fill: 'forwards' });
+        const spotlightAnimation = spotlight.animate([
+          { opacity: 0 }, { opacity: 1 }
+        ], { duration: openingDuration, easing: openingEase, fill: 'forwards' });
+        const glowAnimation = travelGlow.animate([
+          { opacity: 1 }, { opacity: 0 }
+        ], { duration: openingDuration, easing: openingEase, fill: 'forwards' });
+        const controlsAnimation = galleryInner.animate([
+          { opacity: 0, offset: 0 },
+          { opacity: 0, offset: .55 },
+          { opacity: 1, offset: 1 }
+        ], { duration: openingDuration, easing: openingEase, fill: 'forwards' });
+        openingAnimations = [travelAnimation, spotlightAnimation, glowAnimation, controlsAnimation];
+        const startTime = document.timeline.currentTime;
+        openingAnimations.forEach(animation => { animation.startTime = startTime; });
+        travelAnimation.onfinish = finishOpening;
       });
     });
 
@@ -130,12 +164,14 @@
       }
     });
     gallery.addEventListener('cancel', event => { event.preventDefault(); closeGallery(); });
-    gallery.addEventListener('click', event => { if (event.target === gallery) closeGallery(); });
+    gallery.addEventListener('click', event => { if (event.target === gallery || event.target === spotlight) closeGallery(); });
     gallery.addEventListener('close', () => {
       clearTimeout(closingTimer);
       finishOpening();
       document.body.classList.remove('gallery-open');
       gallery.classList.remove('is-closing');
+      spotlight.getAnimations().forEach(animation => animation.cancel());
+      spotlight.style.removeProperty('opacity');
       if (lastButton) lastButton.classList.add('gallery-return');
     });
   }
