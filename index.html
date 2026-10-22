@@ -41,14 +41,18 @@
     <div class="wrap">
       <p class="eyebrow">Documentary · Video · Research</p>
       <h1>
-        <span class="hero-lead">Stories about</span>
+        <span class="hero-lead"><span class="hero-lead-mark">Stories about</span></span>
         <span class="hero-word">people,</span>
-        <span class="hero-word">place,</span>
-        <span class="hero-word hero-word-end">and meaning.</span>
+        <span class="hero-word">place, <span class="hero-amp">&amp;</span></span>
+        <span class="hero-word hero-word-end">meaning.</span>
       </h1>
       <div class="reel">
-        <iframe src="https://player.vimeo.com/video/904550298?title=0&byline=0&portrait=0&dnt=1"
-          title="Brock Edwards — Reel" allow="autoplay; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <a class="reel-poster" href="https://vimeo.com/904550298" target="_blank" rel="noopener"
+          data-embed="https://player.vimeo.com/video/904550298?autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+          aria-label="Play Brock Edwards reel">
+          <img src="img/work/reel.jpg" alt="" width="1280" height="538">
+          <span class="reel-play"><span class="reel-play-icon" aria-hidden="true"></span>Play reel</span>
+        </a>
       </div>
     </div>
   </section>
@@ -145,6 +149,18 @@
     <span>Knoxville, Tennessee</span>
   </div>
 </footer>
-<script>document.querySelectorAll('.y').forEach(e => e.textContent = new Date().getFullYear());</script>
+<script>
+document.querySelectorAll('.y').forEach(e => e.textContent = new Date().getFullYear());
+const reelPoster = document.querySelector('.hero .reel-poster');
+reelPoster?.addEventListener('click', event => {
+  event.preventDefault();
+  const player = document.createElement('iframe');
+  player.src = reelPoster.dataset.embed;
+  player.title = 'Brock Edwards — Reel';
+  player.allow = 'autoplay; fullscreen; picture-in-picture';
+  player.allowFullscreen = true;
+  reelPoster.replaceWith(player);
+});
+</script>
 </body>
 </html>
