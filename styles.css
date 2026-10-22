@@ -211,6 +211,33 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
 footer { padding: 28px 0; font: 500 12px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
+/* Title style from the hero: orange rule, light lead line, big narrow caps */
+.titled { border-left: 4px solid var(--accent); padding-left: 18px; }
+.titled .lead { display: block; margin-bottom: 10px; font: 400 clamp(20px, 2vw, 26px)/1.1 var(--body);
+  letter-spacing: -.04em; text-transform: none; color: var(--ink); }
+h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
+/* same marker stroke as the hero's "Stories about" */
+.titled .lead { width: fit-content; position: relative; isolation: isolate; }
+.titled .lead::before { content: ''; position: absolute; z-index: -1; left: .14em; right: -.1em; bottom: -.02em;
+  height: .52em; background: var(--accent); opacity: .85; transform: rotate(-2deg); }
+.services-band .titled .lead { color: var(--paper); }
+.contact-head { margin-bottom: 4px; }
+.contact .titled .lead { color: #ccc; margin-bottom: 14px; }
+.contact-head a.email { display: inline-block; }
+.hero-amp, .amp { color: var(--accent-ink); font: italic 400 .92em Georgia, serif; text-transform: none; }
+
+/* Handwritten margin notes */
+.note { display: inline-flex; align-items: flex-start; gap: 2px; margin: 0; font: 600 26px/1 'Caveat', cursive;
+  color: var(--accent-ink); transform: rotate(-3deg); }
+.note-arrow { width: 46px; height: 32px; margin-top: 10px; fill: none; stroke: currentColor; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.note-reel { position: absolute; z-index: 2; right: 10px; top: -44px; flex-direction: row-reverse; }
+.note-reel .note-arrow { transform: scaleX(-1); }
+.note-awards { display: flex; justify-content: flex-end; margin: 22px 0 -10px; transform: rotate(2deg); }
+.note-30 { display: flex; justify-content: flex-end; margin: -6px 0 -2px; }
+.note-start, .note-scroll { margin: 0 0 4px; }
+.note-scroll { margin-top: 28px; }
+
 @media (max-width: 1024px) {
   .hero .eyebrow { font-size: 11px; letter-spacing: .16em; white-space: nowrap; }
 }
@@ -224,6 +251,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .hero .reel { grid-column: 1; grid-row: 3; }
 }
 @media (max-width: 760px) {
+  .note-reel { display: none; }
+  .note { font-size: 22px; }
   nav { gap: 14px; }
   nav a { letter-spacing: .1em; font-size: 12px; }
   .stack { font-size: 19px; }
