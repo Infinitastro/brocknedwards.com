@@ -88,6 +88,26 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .project .reel { aspect-ratio: 16 / 9; }
 .project h3 { margin: 18px 0 6px; }
 .project p { margin: 0; color: #333; font-size: 16px; }
+.project h3 a { text-decoration: none; }
+.project h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project .details { display: inline-block; margin-top: 10px; font: 500 12px var(--narrow); letter-spacing: .22em; text-transform: uppercase; text-decoration: none; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+
+/* Project pages */
+.back { display: inline-block; margin-bottom: 20px; font: 500 13px var(--narrow); letter-spacing: .22em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
+.back:hover { color: var(--ink); }
+.page-head .meta { margin: 0; }
+.project-page { padding-top: 40px; }
+.project-info { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; margin-top: 48px; }
+.project-info p { margin: 0 0 16px; max-width: 60ch; }
+.roles { list-style: none; padding: 0; margin: 0; border-top: 2px solid var(--ink); }
+.roles li { padding: 10px 0; border-bottom: 1px solid var(--rule); font: 700 18px var(--narrow); text-transform: uppercase; letter-spacing: .02em; }
+.awards-label { margin-top: 36px; }
+.project-info .film-awards { margin-top: 0; }
+.project-info .awards li { flex-direction: column; gap: 2px; }
+.project-info .awards span { text-align: left; }
+.stills-label { margin: 56px 0 0; }
+.project-page .stills { margin-top: 14px; }
+
 .play { position: absolute; left: 16px; bottom: 16px; background: var(--ink); color: var(--paper); padding: 8px 14px;
   font: 500 12px var(--narrow); letter-spacing: .22em; text-transform: uppercase; }
 
@@ -115,7 +135,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .mono { width: 36px; height: 36px; font-size: 16px; }
   section { padding: 64px 0; }
   .page-head { padding: 48px 0 0; }
-  .film, .about, .services, .projects { grid-template-columns: 1fr; gap: 32px; }
+  .film, .about, .services, .projects, .project-info { grid-template-columns: 1fr; gap: 32px; }
   .stills { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
   .awards li { flex-direction: column; gap: 2px; }
   .awards span { text-align: left; }
