@@ -65,7 +65,7 @@
       <div class="story-bridge-meta"><span>Field note / 01</span><span>Garden City, Kansas</span></div>
       <div class="story-bridge-main">
         <p>Featured <span>work.</span></p>
-        <a href="#film" aria-label="Go to the featured film">↘</a>
+        <a class="arrow-tile" href="#film" aria-label="Go to the featured film">↘</a>
       </div>
     </div>
   </section>
@@ -102,7 +102,7 @@
         <img src="img/stills/ttws-still-5.jpg" alt="People unloading boxes from a truck" loading="lazy">
         <img src="img/stills/ttws-still-6.jpg" alt="A woman pushes a cart across an empty lot" loading="lazy">
       </div>
-      <a class="more" href="work.html">See more work →</a>
+      <a class="more" href="work.html"><span>See more work</span><span class="arrow-tile" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -124,7 +124,7 @@
           <p>Course and lesson video with clear on-screen graphics, from scripting to final delivery.</p>
         </div>
       </div>
-      <a class="more" href="services.html">See services →</a>
+      <a class="more" href="services.html"><span>See services</span><span class="arrow-tile" aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="orgs-band">
@@ -207,20 +207,26 @@ reelPoster?.addEventListener('click', event => {
 });
 const filmPoster = document.querySelector('.film-poster');
 const filmSpotlight = document.querySelector('.film-spotlight');
+let filmSpotlightExit;
 function positionFilmSpotlight() {
-  if (!filmPoster || !filmSpotlight || !document.body.classList.contains('film-spotlit')) return;
+  if (!filmPoster || !filmSpotlight || !document.body.classList.contains('film-spotlight-active')) return;
   const rect = filmPoster.getBoundingClientRect();
   filmSpotlight.style.setProperty('--spot-x', `${rect.left + rect.width / 2}px`);
   filmSpotlight.style.setProperty('--spot-y', `${rect.top + rect.height / 2}px`);
-  filmSpotlight.style.setProperty('--spot-rx', `${rect.width * .85}px`);
-  filmSpotlight.style.setProperty('--spot-ry', `${rect.height * .75}px`);
+  filmSpotlight.style.setProperty('--spot-rx', `${rect.width * 1.15}px`);
+  filmSpotlight.style.setProperty('--spot-ry', `${rect.height * .9}px`);
 }
 function showFilmSpotlight() {
-  document.body.classList.add('film-spotlit');
+  clearTimeout(filmSpotlightExit);
+  document.body.classList.add('film-spotlight-active');
   positionFilmSpotlight();
+  document.body.classList.add('film-spotlit');
 }
 function hideFilmSpotlight() {
+  if (filmPoster?.matches(':hover, :focus-visible')) return;
   document.body.classList.remove('film-spotlit');
+  clearTimeout(filmSpotlightExit);
+  filmSpotlightExit = setTimeout(() => document.body.classList.remove('film-spotlight-active'), 700);
 }
 filmPoster?.addEventListener('pointerenter', showFilmSpotlight);
 filmPoster?.addEventListener('pointerleave', hideFilmSpotlight);
