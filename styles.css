@@ -102,7 +102,7 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 /* Home services band */
 .services-band, .contact { background: var(--charcoal) radial-gradient(rgba(245, 243, 238, .07) 1px, transparent 1.4px) 0 0 / 20px 20px; }
 .services-band { color: var(--paper); padding: 0; }
-.services-band .panel { padding: 48px 0 72px; }
+.services-band .panel { padding: 48px 0 52px; }
 .services-band h2 { margin-bottom: 32px; }
 .services-band .services { counter-reset: svc; }
 .services-band .services h3::before { counter-increment: svc; content: "0" counter(svc); display: block; margin-bottom: 8px;
@@ -112,6 +112,24 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .services-band .services p { color: #d9d6cf; }
 .services-band .more { color: var(--paper); border-bottom-color: var(--accent); }
 .services-band .more:hover { color: var(--accent); }
+.orgs-band { padding: 28px 0 34px; border-top: 1px solid rgba(245,243,238,.18); }
+.orgs-band .eyebrow { margin-bottom: 18px; }
+.orgs-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+.orgs-track { display: flex; width: max-content; animation: orgs-scroll 33s linear infinite; }
+.orgs-list { display: flex; flex: none; align-items: center; gap: 28px; padding: 0 14px; margin: 0; list-style: none; }
+.orgs-list li { display: flex; flex: none; align-items: center; justify-content: center;
+  width: 204px; height: 88px; padding: 0 10px; color: var(--paper); }
+.org-logo { display: flex; align-items: center; justify-content: center; width: 100%; height: 72px; overflow: hidden; }
+.org-logo img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;
+  filter: grayscale(1) brightness(0) invert(1); opacity: .58; }
+.org-logo img[src$="hunger-free-kansas.png"] { transform: scale(1.35); }
+.org-logo-text { color: #aaa; font: 700 20px/.92 var(--narrow); text-align: center; text-transform: uppercase; }
+.org-logo-extension { gap: 8px; color: #aaa; }
+.org-logo-extension img { flex: none; width: 68px; max-width: 68px; max-height: 54px; }
+.org-logo-extension > span { font: 700 21px/.95 Georgia, serif; white-space: nowrap; }
+.org-logo-extension small { display: block; margin-top: 4px; font: 700 11px/1.1 var(--narrow); letter-spacing: .02em; }
+@keyframes orgs-scroll { to { transform: translateX(-50%); } }
 
 /* Home awards, pulled up under the featured film */
 #film { padding-bottom: 32px; border-bottom: 0; }
@@ -265,7 +283,10 @@ h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
   .hero-lead { margin-bottom: 10px; }
   .hero { padding-bottom: 28px; }
   .services-band { padding-bottom: 0; }
-  .services-band .panel { padding: 32px 0 64px; }
+  .services-band .panel { padding: 32px 0 48px; }
+  .orgs-list li { width: 174px; }
+  .org-logo-extension img { width: 54px; max-width: 54px; }
+  .org-logo-extension > span { font-size: 18px; }
   .project-info.has-timeline { grid-template-columns: 1fr; }
   .project-info .side { position: static; }
   .curve-tl li, .curve-tl li:nth-child(even) { justify-content: flex-end; }
