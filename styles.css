@@ -79,6 +79,11 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .services > div { border-top: 2px solid var(--ink); padding-top: 18px; }
 .services p { margin: 0; color: #333; font-size: 16px; }
 
+/* Hero headline highlight: an orange marker block under each line */
+.hero h1 .hl { background: linear-gradient(transparent 52%, var(--accent) 52%, var(--accent) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 .08em; }
+.hero h1:has(.hl) { margin-left: -.08em; }
+
 /* Home services band */
 .hero { padding-bottom: 40px; border-bottom: 0; }
 .services-band { color: var(--paper); padding: 0 0 72px; }
