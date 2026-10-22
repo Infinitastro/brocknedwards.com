@@ -99,18 +99,8 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 .arrow-tile:focus-visible, a:focus-visible > .arrow-tile { outline: 2px solid var(--accent-ink); outline-offset: 5px; }
 
 .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
-.film img.poster { width: 100%; height: auto; display: block;
-  transition: filter .65s cubic-bezier(.22, 1, .36, 1); }
-.film-poster { position: relative; display: block; text-decoration: none; transform: translateY(0) scale(1);
-  box-shadow: 0 9px 24px rgba(17,17,17,.12);
-  transition: transform .65s cubic-bezier(.22, 1, .36, 1), box-shadow .65s cubic-bezier(.22, 1, .36, 1); }
-.film-poster::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
-  background: radial-gradient(ellipse 75% 65% at 50% 42%, rgba(255,248,225,.23), rgba(255,248,225,.07) 48%, transparent 80%);
-  transition: opacity .65s cubic-bezier(.22, 1, .36, 1); }
-.film-poster:hover, .film-poster:focus-visible { z-index: 1; transform: translateY(-18px) scale(1.065);
-  box-shadow: 0 25px 48px rgba(17,17,17,.25), 0 0 65px 16px rgba(232,121,43,.22); }
-.film-poster:hover img.poster, .film-poster:focus-visible img.poster { filter: brightness(1.06) saturate(1.04); }
-.film-poster:hover::after, .film-poster:focus-visible::after { opacity: 1; }
+.film img.poster { width: 100%; height: auto; display: block; }
+.film-poster { display: block; text-decoration: none; }
 .film-poster:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 5px; }
 .film p { margin: 0 0 16px; max-width: 52ch; }
 .film h1 { font-size: clamp(40px, 6vw, 64px); }
@@ -284,8 +274,6 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
   .curve-tl figure { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .film-poster, .film-poster::after, .film-poster img.poster { transition: none; }
-  .film-poster:hover, .film-poster:focus-visible { transform: none; }
   .curve-tl figure { transition: none; }
   .still-open, .still-open img, .still-open::after { transition: none; }
 }
