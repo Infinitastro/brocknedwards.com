@@ -34,7 +34,6 @@
   </div>
 </header>
 
-<div class="film-spotlight" aria-hidden="true"></div>
 <main>
 
 
@@ -205,35 +204,6 @@ reelPoster?.addEventListener('click', event => {
   player.allowFullscreen = true;
   reelPoster.replaceWith(player);
 });
-const filmPoster = document.querySelector('.film-poster');
-const filmSpotlight = document.querySelector('.film-spotlight');
-let filmSpotlightExit;
-function positionFilmSpotlight() {
-  if (!filmPoster || !filmSpotlight || !document.body.classList.contains('film-spotlight-active')) return;
-  const rect = filmPoster.getBoundingClientRect();
-  filmSpotlight.style.setProperty('--spot-x', `${rect.left + rect.width / 2}px`);
-  filmSpotlight.style.setProperty('--spot-y', `${rect.top + rect.height / 2}px`);
-  filmSpotlight.style.setProperty('--spot-rx', `${rect.width * 1.15}px`);
-  filmSpotlight.style.setProperty('--spot-ry', `${rect.height * .9}px`);
-}
-function showFilmSpotlight() {
-  clearTimeout(filmSpotlightExit);
-  document.body.classList.add('film-spotlight-active');
-  positionFilmSpotlight();
-  document.body.classList.add('film-spotlit');
-}
-function hideFilmSpotlight() {
-  if (filmPoster?.matches(':hover, :focus-visible')) return;
-  document.body.classList.remove('film-spotlit');
-  clearTimeout(filmSpotlightExit);
-  filmSpotlightExit = setTimeout(() => document.body.classList.remove('film-spotlight-active'), 700);
-}
-filmPoster?.addEventListener('pointerenter', showFilmSpotlight);
-filmPoster?.addEventListener('pointerleave', hideFilmSpotlight);
-filmPoster?.addEventListener('focus', showFilmSpotlight);
-filmPoster?.addEventListener('blur', hideFilmSpotlight);
-addEventListener('scroll', positionFilmSpotlight, { passive: true });
-addEventListener('resize', positionFilmSpotlight);
 </script>
 </body>
 </html>

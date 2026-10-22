@@ -100,17 +100,15 @@ section { padding: 88px 0; border-bottom: 1px solid var(--rule); scroll-margin-t
 
 .film { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; }
 .film img.poster { width: 100%; height: auto; display: block; }
-.film-spotlight { position: fixed; inset: 0; z-index: 11; pointer-events: none; opacity: 0;
-  background: radial-gradient(ellipse var(--spot-rx, 360px) var(--spot-ry, 440px) at var(--spot-x, 50%) var(--spot-y, 50%),
-    rgba(17,17,17,0) 0%, rgba(17,17,17,.1) 65%, rgba(17,17,17,.32) 100%);
-  transition: opacity .7s ease-in-out; }
-.film-spotlit .film-spotlight { opacity: 1; }
 .film-poster { position: relative; display: block; text-decoration: none; transform: translateY(0) scale(1);
   box-shadow: 0 9px 24px rgba(17,17,17,.12);
-  transition: transform .7s cubic-bezier(.25, .8, .25, 1), box-shadow .7s cubic-bezier(.25, .8, .25, 1); }
-.film-spotlight-active .film-poster { z-index: 12; }
-.film-poster:hover, .film-poster:focus-visible { transform: translateY(-14px) scale(1.045);
-  box-shadow: 0 24px 42px rgba(17,17,17,.22), 0 42px 78px rgba(17,17,17,.12); }
+  transition: transform .5s ease, box-shadow .5s ease; }
+.film-poster::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(232,121,43,.1) 0%, transparent 36%, rgba(0,0,0,.18) 100%);
+  transition: opacity .5s ease; }
+.film-poster:hover, .film-poster:focus-visible { transform: translateY(-10px) scale(1.035);
+  box-shadow: 0 19px 34px rgba(17,17,17,.2), 0 32px 58px rgba(17,17,17,.1); }
+.film-poster:hover::after, .film-poster:focus-visible::after { opacity: 1; }
 .film-poster:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 5px; }
 .film p { margin: 0 0 16px; max-width: 52ch; }
 .film h1 { font-size: clamp(40px, 6vw, 64px); }
@@ -284,7 +282,7 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
   .curve-tl figure { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .film-poster, .film-spotlight { transition: none; }
+  .film-poster, .film-poster::after { transition: none; }
   .film-poster:hover, .film-poster:focus-visible { transform: none; }
   .curve-tl figure { transition: none; }
   .still-open, .still-open img, .still-open::after { transition: none; }
