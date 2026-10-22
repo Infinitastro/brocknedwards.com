@@ -144,7 +144,7 @@
   if (timeline) {
     setupGallery(
       [...timeline.querySelectorAll('.still-open')],
-      document.querySelector('.still-lightbox'),
+      document.querySelector('.still-lightbox') || createDialog(`${document.title.split(' — ')[0]} still gallery`),
       button => button.closest('figure').querySelector('figcaption').textContent
     );
   }

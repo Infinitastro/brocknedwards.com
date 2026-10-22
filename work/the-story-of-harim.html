@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
+<script src="../timeline.js" defer></script>
 <script src="../gallery.js" defer></script>
 </head>
 <body>
@@ -48,10 +49,22 @@
         <iframe src="https://player.vimeo.com/video/890394269?title=0&byline=0&portrait=0&dnt=1"
           title="The Story of Harim" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <div class="project-info">
+      <div class="project-info has-timeline">
         <div class="main-col">
           <p class="eyebrow">About</p>
           <p>Harim, an Unto partner in South Sudan, was threatened for following Jesus and kept going home anyway. When his village’s only water made people sick, Unto and local staff drilled a well, and the village gathered around it.</p>
+          <p class="note note-scroll">scroll through selected frames<svg class="note-arrow" viewBox="0 0 64 44" aria-hidden="true"><path d="M4 8c16-6 34 0 46 26"/><path d="M41 30l9 5 3-10"/></svg></p>
+          <div class="curve-tl" style="--still-ar: 2048 / 1080">
+            <svg class="curve" aria-hidden="true"><path class="track"/><path class="fill"/><path class="sketch"/><path class="accent-sketch"/></svg>
+            <ol>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-1.jpg" alt="A thatched hut in South Sudan" loading="lazy"></button><figcaption>Frame 01</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-2.jpg" alt="Four men walk through the palms" loading="lazy"></button><figcaption>Frame 02</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-3.jpg" alt="The narrator speaks to camera" loading="lazy"></button><figcaption>Frame 03</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-4.jpg" alt="A bowl of muddy drinking water" loading="lazy"></button><figcaption>Frame 04</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-5.jpg" alt="Children at the new well pump" loading="lazy"></button><figcaption>Frame 05</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-harim-6.jpg" alt="Children wave and cheer" loading="lazy"></button><figcaption>Frame 06</figcaption></figure></li>
+            </ol>
+          </div>
         </div>
         <aside class="side">
           <p class="eyebrow">What I did</p>
@@ -60,15 +73,6 @@
             <li>Role to confirm</li>
           </ul>
         </aside>
-      </div>
-      <p class="eyebrow stills-label">Stills</p>
-      <div class="stills" style="--ar: 2048 / 1080">
-        <img src="../img/stills/unto-harim-1.jpg" alt="A thatched hut in South Sudan" loading="lazy">
-        <img src="../img/stills/unto-harim-2.jpg" alt="Four men walk through the palms" loading="lazy">
-        <img src="../img/stills/unto-harim-3.jpg" alt="The narrator speaks to camera" loading="lazy">
-        <img src="../img/stills/unto-harim-4.jpg" alt="A bowl of muddy drinking water" loading="lazy">
-        <img src="../img/stills/unto-harim-5.jpg" alt="Children at the new well pump" loading="lazy">
-        <img src="../img/stills/unto-harim-6.jpg" alt="Children wave and cheer" loading="lazy">
       </div>
       <a class="more" href="world-humanitarian-day.html">Next: World Humanitarian Day →</a>
     </div>

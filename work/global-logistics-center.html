@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
+<script src="../timeline.js" defer></script>
 <script src="../gallery.js" defer></script>
 </head>
 <body>
@@ -48,10 +49,22 @@
         <iframe src="https://player.vimeo.com/video/866079045?title=0&byline=0&portrait=0&dnt=1"
           title="Visiting the Global Logistics Center" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <div class="project-info">
+      <div class="project-info has-timeline">
         <div class="main-col">
           <p class="eyebrow">About</p>
           <p>A volunteer orientation for Unto’s 70,000-square-foot Global Logistics Center, where volunteers sew, sort, and pack humanitarian aid bound for more than 25 countries.</p>
+          <p class="note note-scroll">scroll through selected frames<svg class="note-arrow" viewBox="0 0 64 44" aria-hidden="true"><path d="M4 8c16-6 34 0 46 26"/><path d="M41 30l9 5 3-10"/></svg></p>
+          <div class="curve-tl" style="--still-ar: 2048 / 1080">
+            <svg class="curve" aria-hidden="true"><path class="track"/><path class="fill"/><path class="sketch"/><path class="accent-sketch"/></svg>
+            <ol>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-1.jpg" alt="A volunteer sorts supplies under warehouse lights" loading="lazy"></button><figcaption>Frame 01</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-2.jpg" alt="Volunteers pack aid at a long table" loading="lazy"></button><figcaption>Frame 02</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-3.jpg" alt="Two volunteers work side by side" loading="lazy"></button><figcaption>Frame 03</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-4.jpg" alt="The warehouse floor full of volunteers" loading="lazy"></button><figcaption>Frame 04</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-5.jpg" alt="Volunteers in a warehouse aisle" loading="lazy"></button><figcaption>Frame 05</figcaption></figure></li>
+              <li><figure><button class="still-open" type="button"><img src="../img/stills/unto-glc-6.jpg" alt="Beads sorted in a tray" loading="lazy"></button><figcaption>Frame 06</figcaption></figure></li>
+            </ol>
+          </div>
         </div>
         <aside class="side">
           <p class="eyebrow">What I did</p>
@@ -60,15 +73,6 @@
             <li>Role to confirm</li>
           </ul>
         </aside>
-      </div>
-      <p class="eyebrow stills-label">Stills</p>
-      <div class="stills" style="--ar: 2048 / 1080">
-        <img src="../img/stills/unto-glc-1.jpg" alt="A volunteer sorts supplies under warehouse lights" loading="lazy">
-        <img src="../img/stills/unto-glc-2.jpg" alt="Volunteers pack aid at a long table" loading="lazy">
-        <img src="../img/stills/unto-glc-3.jpg" alt="Two volunteers work side by side" loading="lazy">
-        <img src="../img/stills/unto-glc-4.jpg" alt="The warehouse floor full of volunteers" loading="lazy">
-        <img src="../img/stills/unto-glc-5.jpg" alt="Volunteers in a warehouse aisle" loading="lazy">
-        <img src="../img/stills/unto-glc-6.jpg" alt="Beads sorted in a tray" loading="lazy">
       </div>
       <a class="more" href="the-table-we-share.html">Next: The Table We Share →</a>
     </div>
