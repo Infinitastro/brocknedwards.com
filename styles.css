@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Bitter Brand';
+  src: url('fonts/bitter-brand-650.woff') format('woff');
+  font-weight: 650;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --ink: #111;
   --paper: #f2eee6;
@@ -24,13 +31,12 @@ a { color: inherit; text-underline-offset: .2em; }
 img { max-width: 100%; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-/* Header + wordmark (matches Brand/_source/wordmark.html) */
+/* Header + wordmark */
 header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--rule); }
 header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.mark { display: flex; align-items: stretch; gap: 9px; text-decoration: none; }
-.mono { width: 44px; height: 43px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center;
-  font: 800 19px/1 var(--body); letter-spacing: -.03em; }
-.stack { font: 700 23px/0.92 var(--narrow); text-transform: uppercase; letter-spacing: .02em; display: flex; flex-direction: column; justify-content: center; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-mark { display: block; flex: none; width: 50px; height: 45px; object-fit: contain; }
+.stack { font: 650 23px/1.04 'Bitter Brand', Georgia, serif; text-transform: none; letter-spacing: -.035em; display: flex; flex-direction: column; justify-content: center; }
 nav { display: flex; gap: 28px; }
 nav a { display: inline-flex; align-items: center; min-height: 44px; font: 500 13px var(--narrow); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--muted); }
 nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
@@ -469,7 +475,7 @@ h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
   nav { gap: 14px; }
   nav a { letter-spacing: .06em; font-size: 13px; }
   .stack { font-size: 19px; }
-  .mono { width: 36px; height: 36px; font-size: 16px; }
+  .brand-mark { width: 40px; height: 36px; }
   section { padding: 64px 0; }
   .page-head { padding: 48px 0 0; }
   .film, .about, .services, .project-info, .featured-text, .reel-row, .cards.two, .cards.three { grid-template-columns: 1fr; gap: 32px; }
