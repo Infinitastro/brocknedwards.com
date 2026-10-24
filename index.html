@@ -22,10 +22,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261023b">
 <script src="gallery.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header>
   <div class="wrap">
@@ -42,13 +43,13 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
 
 
   <section class="hero" id="reel">
     <div class="wrap">
-      <p class="eyebrow">Documentary · Video · Research</p>
+      <p class="eyebrow">Documentary · Video · <a href="about.html#research">Research</a></p>
       <h1>
         <span class="hero-lead"><span class="hero-lead-mark">Stories about</span></span>
         <span class="hero-word">people,</span>
@@ -132,7 +133,8 @@
         </div>
         <div>
           <h3>Education</h3>
-          <p>Course and lesson video with clear on-screen graphics, from scripting to final delivery.</p>
+          <p>Video editing and on-screen graphics for instructor-led lessons.</p>
+          <p><a href="services.html#education">Education video services</a></p>
         </div>
       </div>
       <a class="more" href="services.html"><span>See services</span><span class="arrow-tile" aria-hidden="true">→</span></a>
@@ -190,7 +192,7 @@
 
   <section id="contact" class="contact" tabindex="-1">
     <div class="wrap">
-      <div class="titled contact-head"><span class="lead">Contact</span></div>
+      <h2 class="titled contact-head"><span class="lead">Contact</span></h2>
       <p>Tell me what you're making, who it needs to reach, where the video will live, and your hoped-for timing. I aim to reply within two business days.</p>
       <a class="email" href="mailto:brockedwardsvideo@gmail.com?subject=Project%20inquiry">brockedwardsvideo@gmail.com</a>
     </div>
@@ -216,5 +218,6 @@ reelPoster?.addEventListener('click', event => {
   reelPoster.replaceWith(player);
 });
 </script>
+<script src="logo-strip.js?v=20261023b"></script>
 </body>
 </html>
