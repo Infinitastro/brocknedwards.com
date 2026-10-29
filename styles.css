@@ -420,39 +420,6 @@ body.gallery-open { overflow: hidden; }
 .contact > .wrap > a.email { display: inline-block; margin-top: 24px; }
 .contact > .wrap > a.email:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 
-.contact .contact-btn { margin-top: 24px; background: var(--accent); color: var(--ink); }
-.contact .contact-btn:hover { background: var(--paper); }
-.contact .contact-or { margin: 24px 0 0; font: 500 13px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: #aaa; }
-.contact .contact-or + a.email { margin-top: 8px; }
-
-/* Start a project (intake form) */
-.start { padding-top: 40px; }
-.start .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 56px; align-items: start; }
-.intake { display: grid; gap: 28px; margin: 0; padding: 0; border: 0; }
-.intake .field { display: grid; gap: 8px; }
-.intake label, .intake legend { font: 700 14px var(--narrow); letter-spacing: .12em; text-transform: uppercase; }
-.intake legend { padding: 0; margin-bottom: 10px; }
-.intake fieldset { margin: 0; padding: 0; border: 0; }
-.intake input[type="text"], .intake input[type="email"], .intake select, .intake textarea {
-  width: 100%; padding: 12px 14px; border: 2px solid var(--ink); background: #fff; color: var(--ink);
-  font: 400 16px/1.5 var(--body); border-radius: 0; }
-.intake textarea { min-height: 120px; resize: vertical; }
-.intake select { appearance: none; -webkit-appearance: none; padding-right: 40px;
-  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' fill='none' stroke='%23111' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center / 14px; }
-.intake input:focus-visible, .intake select:focus-visible, .intake textarea:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }
-.intake .choices { display: grid; gap: 10px; }
-.intake .choices label { display: flex; align-items: center; gap: 12px; font: 400 16px/1.4 var(--body);
-  letter-spacing: 0; text-transform: none; cursor: pointer; }
-.intake input[type="radio"] { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--accent-ink); }
-.intake .hint { margin: 0; font-size: 15px; color: var(--muted); }
-.intake .btn { justify-self: start; margin-top: 4px; }
-.start-side { border-top: 2px solid var(--ink); padding-top: 18px; position: sticky; top: 100px; }
-.start-side h2 { font-size: 24px; margin-bottom: 10px; }
-.start-side p { margin: 0 0 16px; font-size: 16px; color: #333; }
-.start-side .btn { margin-top: 0; }
-.start-fallback { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--muted); }
-.start-fallback a:hover { color: var(--accent-ink); }
-
 footer { padding: 28px 0; font: 500 12px var(--narrow); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
@@ -512,8 +479,6 @@ h1.titled .lead { font-size: clamp(22px, 2.4vw, 30px); }
   section { padding: 64px 0; }
   .page-head { padding: 48px 0 0; }
   .film, .about, .services, .project-info, .featured-text, .reel-row, .cards.two, .cards.three { grid-template-columns: 1fr; gap: 32px; }
-  .start .wrap { grid-template-columns: 1fr; gap: 40px; }
-  .start-side { position: static; }
   .featured-text { gap: 12px; }
   .hero h1 { font-size: clamp(48px, 9vw, 62px); }
   .hero-lead { margin-bottom: 10px; }
