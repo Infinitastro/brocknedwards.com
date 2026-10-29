@@ -1,9 +1,9 @@
 <!doctype html>
 <!--
   BEFORE DEPLOY, Brock must replace two placeholders in this file:
-  1. Form action:  https://formspree.io/f/REPLACE_ME  -> your real Formspree form endpoint
+  1. Form action: formsubmit.co, no account. The FIRST submission emails brockedwardsvideo@gmail.com an activation link; click it once.
      (create a form at formspree.io, set its recipient to brockedwardsvideo@gmail.com, paste the /f/xxxx URL).
-  2. Booking link:  https://cal.com/REPLACE_ME  -> your real Cal.com (or other scheduler) link.
+  2. Booking link: currently a mailto. Replace with a Cal.com or Google appointment-schedule link when you make one.
      This appears twice: the sidebar button and the fallback line.
 -->
 <html lang="en">
@@ -60,7 +60,9 @@
 
   <section class="start">
     <div class="wrap">
-      <form class="intake" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <form class="intake" action="https://formsubmit.co/brockedwardsvideo@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://brocknedwards.com/start.html?sent=1">
         <div class="field">
           <label for="org">Your name and organization</label>
           <input type="text" id="org" name="organization" autocomplete="organization" required>
@@ -110,7 +112,7 @@
       <aside class="start-side">
         <h2>Rather talk?</h2>
         <p>Book a short call. We cover the story, the audience, and where the video will live, and I follow up with a written approach, schedule, and budget.</p>
-        <a class="btn" href="https://cal.com/REPLACE_ME" target="_blank" rel="noopener">Book a call</a>
+        <a class="btn" href="mailto:brockedwardsvideo@gmail.com?subject=Book%20a%20call" target="_blank" rel="noopener">Book a call</a>
         <p class="start-fallback">Forms not your thing? Email <a href="mailto:brockedwardsvideo@gmail.com?subject=Project%20inquiry">brockedwardsvideo@gmail.com</a> with the same five answers.</p>
       </aside>
     </div>
