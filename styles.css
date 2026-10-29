@@ -245,6 +245,9 @@ a:hover .thumb .watch, a:focus-visible .thumb .watch { opacity: 1; }
 .project-info .film-awards { margin-top: 0; }
 .project-info .awards li { flex-direction: column; gap: 2px; }
 .project-info .awards span { text-align: left; }
+.case-cta { margin: 56px 0 0; }
+.case-cta .btn { margin-top: 0; }
+.card .summary { margin: 8px 0 0; color: #333; font-size: 15px; line-height: 1.45; }
 .stills-label { margin: 56px 0 0; }
 .project-page .stills { margin-top: 14px; }
 .project-page .stills img { aspect-ratio: var(--ar, 16 / 9); }
