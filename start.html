@@ -1,0 +1,136 @@
+<!doctype html>
+<!--
+  BEFORE DEPLOY, Brock must replace two placeholders in this file:
+  1. Form action:  https://formspree.io/f/REPLACE_ME  -> your real Formspree form endpoint
+     (create a form at formspree.io, set its recipient to brockedwardsvideo@gmail.com, paste the /f/xxxx URL).
+  2. Booking link:  https://cal.com/REPLACE_ME  -> your real Cal.com (or other scheduler) link.
+     This appears twice: the sidebar button and the fallback line.
+-->
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G6JSV7GJ2M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G6JSV7GJ2M');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a project — Brock Edwards</title>
+<meta name="description" content="Tell Brock Edwards about your video project in five questions, or book a short call.">
+<meta property="og:title" content="Start a project — Brock Edwards">
+<meta property="og:description" content="Five questions, or a short call. No email to compose first.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brocknedwards.com/start.html">
+<meta property="og:image" content="https://brocknedwards.com/img/stills/ttws-still-1.jpg">
+<link rel="icon" href="favicon.svg?v=20261024-field-stamp" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=Archivo:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261029-start">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="index.html" aria-label="Brock Edwards, home">
+      <img class="brand-mark" src="img/field-stamp-refined.svg" width="50" height="45" alt="" aria-hidden="true">
+      <span class="stack">Brock<br>Edwards</span>
+    </a>
+    <nav>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="start.html" aria-current="page">Start a project</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="page-head">
+    <div class="wrap">
+      <h1 class="titled"><span class="lead">Hire me</span> Start a project</h1>
+      <p class="lede">Five questions, then I reply within two business days with a first read on scope and cost. If you would rather talk first, book a call instead.</p>
+    </div>
+  </section>
+
+  <section class="start">
+    <div class="wrap">
+      <form class="intake" action="https://formspree.io/f/REPLACE_ME" method="POST">
+        <div class="field">
+          <label for="org">Your name and organization</label>
+          <input type="text" id="org" name="organization" autocomplete="organization" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="purpose">What is the video for?</label>
+          <textarea id="purpose" name="purpose" required placeholder="Who it needs to reach, and where it will live: a website, a campaign, a classroom, an event."></textarea>
+        </div>
+
+        <fieldset>
+          <legend>Footage</legend>
+          <div class="choices">
+            <label><input type="radio" name="footage" value="New shoot" required> New shoot</label>
+            <label><input type="radio" name="footage" value="You have footage"> You already have footage or photos</label>
+            <label><input type="radio" name="footage" value="Both"> Both</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="timing">Timing</label>
+          <input type="text" id="timing" name="timing" placeholder="A date it needs to exist by, or “no fixed date”">
+        </div>
+
+        <fieldset>
+          <legend>Budget range</legend>
+          <div class="choices">
+            <label><input type="radio" name="budget" value="Under $1,500" required> Under $1,500</label>
+            <label><input type="radio" name="budget" value="$1,500 to $3,000"> $1,500 to $3,000</label>
+            <label><input type="radio" name="budget" value="Over $3,000"> Over $3,000</label>
+            <label><input type="radio" name="budget" value="Not sure yet"> Not sure yet</label>
+          </div>
+          <p class="hint">For reference: a 60 to 90 second overview film edited from footage you already have has run $1,440 to $2,240. I bill at $80 an hour and quote a flat project price after a scoping call.</p>
+        </fieldset>
+
+        <input type="hidden" name="_subject" value="Project inquiry from brocknedwards.com">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <button class="btn" type="submit">Send it</button>
+      </form>
+
+      <aside class="start-side">
+        <h2>Rather talk?</h2>
+        <p>Book a short call. We cover the story, the audience, and where the video will live, and I follow up with a written approach, schedule, and budget.</p>
+        <a class="btn" href="https://cal.com/REPLACE_ME" target="_blank" rel="noopener">Book a call</a>
+        <p class="start-fallback">Forms not your thing? Email <a href="mailto:brockedwardsvideo@gmail.com?subject=Project%20inquiry">brockedwardsvideo@gmail.com</a> with the same five answers.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="titled contact-head"><span class="lead">Contact</span></h2>
+      <a class="email" href="mailto:brockedwardsvideo@gmail.com?subject=Project%20inquiry">brockedwardsvideo@gmail.com</a>
+      <p>Tell me about the project, the timeline, and where the video will live. I reply within two business days.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span class="y">2026</span> Brock Edwards</span>
+    <span>Knoxville, Tennessee</span>
+  </div>
+</footer>
+<script>document.querySelectorAll('.y').forEach(e => e.textContent = new Date().getFullYear());</script>
+</body>
+</html>
